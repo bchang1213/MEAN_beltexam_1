@@ -1,0 +1,28 @@
+<a [routerLink]="['/dashboard']">Cancel</a>
+
+<fieldset>
+	<legend>Put the question and options here:</legend>
+	<form (submit)="submitPoll()" #pollForm="ngForm">
+		<label>Question:
+			<input type="text" name="question" required [(ngModel)]='newPoll.question' #question='ngModel'>
+			<span class="invalid" *ngIf="question.dirty && question.invalid">Question is necessary.</span>
+		</label>
+		<label>Option 1:
+			<input type="text" name="option1" required [(ngModel)]='newPoll.option1.answer' #option1='ngModel'>
+			<span class="invalid" *ngIf="option1.dirty && option1.invalid">Option1 is necessary.</span>
+		</label>
+		<label>Option 2:
+			<input type="text" name="option2" required [(ngModel)]='newPoll.option2.answer' #option2='ngModel'>
+			<span class="invalid" *ngIf="option2.dirty && option2.invalid">Option2 is necessary.</span>
+		</label>
+		<label>Option 3:
+			<input type="text" name="option3" required [(ngModel)]='newPoll.option3.answer' #option3='ngModel'>
+			<span class="invalid" *ngIf="option3.dirty && option3.invalid">Option3 is necessary.</span>
+		</label>
+		<label>Option 4:
+			<input type="text" name="option4" required [(ngModel)]='newPoll.option4.answer' #option4='ngModel'>
+			<span class="invalid" *ngIf="option4.dirty && option4.invalid">Option4 is necessary.</span>
+		</label>
+		<input type="submit" name="submit" value="Create Poll" [disabled]="pollForm.invalid">
+	</form>
+</fieldset>

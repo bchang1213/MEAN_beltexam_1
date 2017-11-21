@@ -1,0 +1,34 @@
+<header>
+	<a [routerLink]="['/create']">Create New Poll</a>
+	<button type="button" class="btn btn-link pull-right" (click)="logout()">Logout</button>
+</header>
+
+<p>User Session ID: {{ currentUser.name }}:{{ currentUser._id }}</p>
+
+<div class="info">
+	<h5>Current Polls: </h5>
+	<!-- <input type="text" name="searchString" #searchString="ngModel" [(ngModel)]="searchString"> -->
+</div>
+
+<div class="table">
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Survey Question</th>
+				<th>Date Posted</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let poll of showPolls">
+				<td>{{poll.user[0].name}}</td>
+				<td><a [routerLink]="['/poll', poll._id]">{{poll.question}}</a></td>
+				<td>{{poll.createdAt | date: 'mediumDate'}}</td>
+				<td>
+					<button type="button" class="btn btn-link" (click)="deletePoll(poll._id)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

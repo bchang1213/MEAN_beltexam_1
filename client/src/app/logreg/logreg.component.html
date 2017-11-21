@@ -1,0 +1,12 @@
+<h1>Survey Polls!</h1>
+
+<fieldset>
+	<legend>Login</legend>
+	<form (submit)="onSubmit()" #loginForm="ngForm">
+		<label>Your Name:
+			<input type="text" name="name" required #name="ngModel" minlength="4" [(ngModel)]="newUser.name">
+			<span class="invalid" *ngIf="name.dirty && name.invalid">Name is invalid. Please enter at least 4 characters.</span>
+		</label>
+		<input type="submit" name="submit" value="Login" [disabled]="loginForm.invalid">
+	</form>
+</fieldset>
